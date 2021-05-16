@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thyemleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="card text-center">
+				<div class="card-body">
+					<img style="height: 200px; width: 200px" class="my_profile_pic"
+						alt="profile photo" src=""
+						th:src="@{'/img/'+${user.userImageUrl}}">
+					<h1 class="mt-2 mb-2" th:text="${user.userName}"></h1>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#USERID</th>
+								<th scope="col">CMP2021<span th:text="${user.userId}"></span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Email</th>
+								<td><span th:text="${user.userEmail}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Role</th>
+								<td><span th:text="${user.userRole}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Account Status</th>
+								<td><span th:text="${user.userEnabled}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">About</th>
+								<td><span th:text="${user.userDesc}"></span></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="container text-center mt-3">
+						<a  th:onclick="|deleteUser()|" class="btn btn-outline-danger btn-block">Delete</a>
+						<form class="mt-2" th:action="@{/user/update-user}">
+							  <button type="submit" class="btn btn-outline-primary btn-block">Update</button>
+					   </form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+		     $('.item').removeClass('active');
+		      $('#prof-link').addClass('active');
+		  </script>
+
+	</section>
+
+</body>
+</html>
